@@ -58,3 +58,11 @@ test("when the - button is pressed, the counter changes to -1", () => {
   const counterElement = screen.getByTestId("counter");
   expect(counterElement).toHaveTextContent(-1);
 });
+
+// on/off 버튼의 배경색상이 파란색인지 확인
+test("on/off button has blue color", () => {
+  render(<App />);
+
+  const buttonElement = screen.getByTestId("on/off-button");
+  expect(buttonElement).toHaveStyle({ backgroundColor: "blue" });
+});
