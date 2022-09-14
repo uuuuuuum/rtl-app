@@ -66,3 +66,17 @@ test("on/off button has blue color", () => {
   const buttonElement = screen.getByTestId("on/off-button");
   expect(buttonElement).toHaveStyle({ backgroundColor: "blue" });
 });
+
+// on/off 버튼 클릭시 - + 플러스 버튼 disalbed가 true로 바뀌는지 확인
+test("Prevent the - + button from being pressed when the on/off button is clicked", () => {
+  render(<App />);
+
+  const onOffButtonElement = screen.getByTestId("on/off-button");
+  fireEvent.click(onOffButtonElement);
+
+  const plusButtonElement = screen.getByTestId("plus-button");
+  expect(plusButtonElement).toBeDisabled();
+
+  const minusButtonElement = screen.getByTestId("minus-button");
+  expect(minusButtonElement).toBeDisabled();
+});
